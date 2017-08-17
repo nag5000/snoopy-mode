@@ -109,6 +109,10 @@
     (define-key map (kbd "<kp-8>") (snoopy-insert-char ?8))
     (define-key map (kbd "<kp-9>") (snoopy-insert-char ?9))
     (define-key map (kbd "<kp-0>") (snoopy-insert-char ?0))
+    (define-key input-decode-map (kbd "[") 'snoopy-insert-special)
+    (define-key input-decode-map (kbd "]") 'snoopy-insert-special)
+    (define-key input-decode-map (kbd "{") 'snoopy-insert-special)
+    (define-key input-decode-map (kbd "}") 'snoopy-insert-special)
     map))
 
 (defvar snoopy-lighter " Snoopy"
@@ -139,7 +143,11 @@ modes such as Paredit work."
           (?9 (kbd "("))
           (?0 (kbd ")"))
           (?\( (kbd "9"))
-          (?\) (kbd "0")))
+          (?\) (kbd "0"))
+          (?[ (kbd "{"))
+          (?] (kbd "}"))
+          (?{ (kbd "["))
+          (?} (kbd "]")))
       (vector (aref cmd-ks (1- len))))))
 
 (provide 'snoopy)
